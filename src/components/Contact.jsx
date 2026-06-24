@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 const PhoneIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -30,11 +31,11 @@ const ArrowUpRight = () => (
 )
 
 const INFO = [
-  { Icon: PhoneIcon, label: 'Telephone',    value: '015253297',                          sub: 'Sun–Fri  9 AM – 6 PM',     href: 'tel:015253297' },
+  { Icon: PhoneIcon, label: 'Telephone',    value: '015253297',                          sub: 'Sun–Fri  8 AM – 6 PM',     href: 'tel:015253297' },
   { Icon: PhoneIcon, label: 'WhatsApp',    value: '+977 986-2349049',                   sub: 'Chat with us on WhatsApp',  href: 'https://wa.me/9779862349049' },
   { Icon: MailIcon,  label: 'Email Us',     value: 'globalgateedu.jadibuti@gmail.com',   sub: 'We reply within 24 hours', href: 'mailto:globalgateedu.jadibuti@gmail.com' },
   { Icon: PinIcon,   label: 'Visit Us',     value: 'Jadibuti, Kathmandu',                sub: 'Near Jadibuti Bus Park',   href: 'https://maps.google.com/?q=M9F3%2BVC9+Kathmandu+44600+Nepal' },
-  { Icon: ClockIcon, label: 'Office Hours', value: 'Sun–Fri: 9 AM – 6 PM',              sub: 'Sat: 10 AM – 3 PM',        href: null },
+  { Icon: ClockIcon, label: 'Office Hours', value: 'Sun–Fri: 8 AM – 6 PM',              sub: 'Saturday: Closed',         href: null },
 ]
 
 const DESTINATIONS = ['Australia', 'Canada', 'New Zealand', 'United Kingdom', 'USA', 'Not decided yet']
@@ -52,11 +53,22 @@ export default function Contact() {
     e.preventDefault()
     setLoading(true); setError(false)
     try {
-      await fetch(import.meta.env.VITE_FORM_ENDPOINT, {
-        method: 'POST', mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          title:       `New Inquiry – ${form.name}`,
+          name:        form.name,
+          email:       form.email,
+          from_name:   form.name,
+          from_phone:  form.phone,
+          from_email:  form.email,
+          destination: form.destination,
+          service:     form.service,
+          message:     form.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
       setSent(true)
     } catch { setError(true) }
     finally { setLoading(false) }

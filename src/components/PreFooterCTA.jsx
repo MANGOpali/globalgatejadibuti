@@ -18,7 +18,7 @@ export default function PreFooterCTA() {
             &nbsp;·&nbsp; globalgateedu.jadibuti@gmail.com
           </p>
           <p style={{ color:'rgba(255,255,255,0.45)', fontSize:13, marginBottom:28 }}>
-            Sunday – Friday: 9:00 AM – 6:00 PM &nbsp;|&nbsp; Saturday: 10:00 AM – 3:00 PM
+            Sunday – Friday: 8:00 AM – 6:00 PM &nbsp;|&nbsp; Saturday: Closed
           </p>
           <div className="prefooter-btns">
             <a href="tel:015253297" className="btn-pill btn-white">

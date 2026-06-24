@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: 'Is the initial counseling session really free?',
-    a: 'Yes, completely free and with no obligation. You can walk into our Jadibuti office any day from Sunday to Friday (9AM–6PM) or Saturday (10AM–3PM) for a face-to-face counseling session. We assess your profile and give you honest advice about the best options available to you.',
+    a: 'Yes, completely free and with no obligation. You can walk into our Jadibuti office any day from Sunday to Friday (8AM–6PM) for a face-to-face counseling session. We assess your profile and give you honest advice about the best options available to you.',
   },
 ]
 
