@@ -161,7 +161,6 @@ export default function Testimonials() {
                   <div className="testi-stars">★★★★★</div>
                   <p className="testi-text">{r.text}</p>
                   <div className="testi-author">
-                    <img src={r.avatar} alt={r.name} className="testi-avatar" loading="lazy" />
                     <div>
                       <div className="testi-name">{r.name}</div>
                       <div className="testi-dest">{r.dest}</div>
