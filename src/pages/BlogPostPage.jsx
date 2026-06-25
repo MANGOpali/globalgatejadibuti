@@ -4,6 +4,8 @@ import { getPostBySlug, blogPosts } from '../data/blogPosts'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import WhatsApp from '../components/WhatsApp'
+import Cursor from '../components/Cursor'
+import FloatingDot from '../components/FloatingDot'
 
 function renderBody(item, i) {
   if (item.type === 'p') {
@@ -40,9 +42,25 @@ export default function BlogPostPage() {
 
   useEffect(() => {
     if (!post) return
+    const url = `https://globalgatejadibuti.com/blog/${post.slug}`
+
     document.title = post.metaTitle
-    const desc = document.querySelector('meta[name="description"]')
-    if (desc) desc.setAttribute('content', post.metaDescription)
+
+    const setMeta = (sel, attr, val) => {
+      const el = document.querySelector(sel)
+      if (el) el.setAttribute(attr, val)
+    }
+
+    setMeta('meta[name="description"]',        'content', post.metaDescription)
+    setMeta('link[rel="canonical"]',           'href',    url)
+    setMeta('meta[property="og:title"]',       'content', post.metaTitle)
+    setMeta('meta[property="og:description"]', 'content', post.metaDescription)
+    setMeta('meta[property="og:image"]',       'content', post.img)
+    setMeta('meta[property="og:url"]',         'content', url)
+    setMeta('meta[name="twitter:title"]',      'content', post.metaTitle)
+    setMeta('meta[name="twitter:description"]','content', post.metaDescription)
+    setMeta('meta[name="twitter:image"]',      'content', post.img)
+
     window.scrollTo(0, 0)
 
     const ldJson = {
@@ -76,6 +94,14 @@ export default function BlogPostPage() {
     return () => {
       const s = document.getElementById('article-ld')
       if (s) s.remove()
+      setMeta('link[rel="canonical"]',           'href',    'https://globalgatejadibuti.com/')
+      setMeta('meta[property="og:url"]',         'content', 'https://globalgatejadibuti.com/')
+      setMeta('meta[property="og:title"]',       'content', 'Best UK Consultancy in Nepal — Global Gate Jadibuti | Exclusive UK University Partner')
+      setMeta('meta[property="og:description"]', 'content', "Nepal's exclusive authorized UK university consultancy in Jadibuti, Kathmandu.")
+      setMeta('meta[property="og:image"]',       'content', 'https://globalgatejadibuti.com/hearder.webp')
+      setMeta('meta[name="twitter:title"]',      'content', 'Best UK Consultancy in Nepal — Global Gate Jadibuti')
+      setMeta('meta[name="twitter:description"]','content', "Nepal's exclusive UK university partner in Jadibuti.")
+      setMeta('meta[name="twitter:image"]',      'content', 'https://globalgatejadibuti.com/hearder.webp')
     }
   }, [post])
 
@@ -85,6 +111,8 @@ export default function BlogPostPage() {
 
   return (
     <>
+      <Cursor />
+      <FloatingDot />
       <Navbar />
       <main className="bpp">
 

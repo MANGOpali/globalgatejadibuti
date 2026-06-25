@@ -4,19 +4,45 @@ import { blogPosts } from '../data/blogPosts'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import WhatsApp from '../components/WhatsApp'
+import Cursor from '../components/Cursor'
+import FloatingDot from '../components/FloatingDot'
 
 export default function BlogListPage() {
   useEffect(() => {
-    document.title = 'UK Study Abroad Blog — Tips, Guides & Visa Advice | Global Gate Jadibuti'
-    const desc = document.querySelector('meta[name="description"]')
-    if (desc) desc.setAttribute('content', 'Expert guides for Nepali students studying in the UK — visa process, university rankings, IELTS tips, cost breakdowns, and post-study work rights. From Nepal\'s exclusive UK consultancy in Jadibuti.')
+    const title = 'UK Study Abroad Blog — Visa Guides, University Tips & IELTS Advice | Global Gate Jadibuti'
+    const description = "Expert guides for Nepali students studying in the UK — visa process, university rankings, IELTS tips, cost breakdowns, and post-study work rights. From Nepal's exclusive UK consultancy in Jadibuti."
+    const url = 'https://globalgatejadibuti.com/blog'
+
+    document.title = title
+
+    const setMeta = (sel, attr, val) => {
+      const el = document.querySelector(sel)
+      if (el) el.setAttribute(attr, val)
+    }
+
+    setMeta('meta[name="description"]',        'content', description)
+    setMeta('link[rel="canonical"]',           'href',    url)
+    setMeta('meta[property="og:title"]',       'content', title)
+    setMeta('meta[property="og:description"]', 'content', description)
+    setMeta('meta[property="og:url"]',         'content', url)
+    setMeta('meta[name="twitter:title"]',      'content', title)
+    setMeta('meta[name="twitter:description"]','content', description)
+
     window.scrollTo(0, 0)
+
+    return () => {
+      const setM = (sel, attr, val) => { const el = document.querySelector(sel); if (el) el.setAttribute(attr, val) }
+      setM('link[rel="canonical"]', 'href', 'https://globalgatejadibuti.com/')
+      setM('meta[property="og:url"]', 'content', 'https://globalgatejadibuti.com/')
+    }
   }, [])
 
   const [featured, ...rest] = blogPosts
 
   return (
     <>
+      <Cursor />
+      <FloatingDot />
       <Navbar />
       <main className="blp">
 
