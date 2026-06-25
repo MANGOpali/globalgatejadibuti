@@ -59,7 +59,7 @@ export default function Services() {
               <div className="svc-left">
                 <span className="svc-row-num">{r.num}</span>
                 <div>
-                  <div className="svc-row-title">{r.title}</div>
+                  <h3 className="svc-row-title">{r.title}</h3>
                 </div>
               </div>
               <div className="svc-right">

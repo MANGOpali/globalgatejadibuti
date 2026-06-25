@@ -16,7 +16,7 @@ export default function About() {
           {/* Left — image collage */}
           <div className="about-collage">
             <div className="ac-main">
-              <img src={IMG_MAIN} alt="Students in counseling session" />
+              <img src={IMG_MAIN} alt="Students in counseling session" loading="lazy" />
               <div className="ac-overlay-stats">
                 {[
                   { n:'5000+', l:'Students Placed' },
@@ -63,7 +63,7 @@ export default function About() {
                 <div className="af" key={title}>
                   <div className="af-num">{n}</div>
                   <div>
-                    <div className="af-title">{title}</div>
+                    <h3 className="af-title">{title}</h3>
                     <div className="af-desc">{desc}</div>
                   </div>
                 </div>

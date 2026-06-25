@@ -43,7 +43,7 @@ export default function Blog() {
           {posts.map(p => (
             <div className="blog-card" key={p.title}>
               <div className="blog-img">
-                <img src={p.img} alt={p.title} />
+                <img src={p.img} alt={p.title} loading="lazy" />
                 <div className="blog-img-overlay" />
               </div>
               <div className="blog-body">

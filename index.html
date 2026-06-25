@@ -4,13 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/webp" href="/src/logo/hearder.webp" />
+    <!-- Favicon & PWA manifest -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/global_gate.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Theme color (address bar on mobile Chrome / Safari) -->
+    <meta name="theme-color" content="#1A3E8F" />
+
+    <!-- Apple PWA meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Global Gate" />
 
     <!-- Primary SEO -->
-    <title>Global Gate Educational Consultancy — Jadibuti, Kathmandu | Study Abroad Nepal</title>
-    <meta name="description" content="Global Gate Educational Consultancy Jadibuti Branch — Nepal's trusted study abroad advisors. University admissions, visa assistance, IELTS/PTE coaching, and scholarship guidance for Australia, Canada, UK, USA, New Zealand." />
-    <meta name="keywords" content="study abroad Nepal, educational consultancy Kathmandu, IELTS coaching Jadibuti, PTE preparation Nepal, student visa Nepal, university admission Nepal, Australia student visa, Canada study permit, UK student visa, Global Gate Jadibuti" />
+    <title>Best UK Consultancy in Nepal | Global Gate Jadibuti — Exclusive UK University Partner</title>
+    <meta name="description" content="Global Gate Jadibuti is Nepal's exclusive UK university consultancy. Authorized partner for top UK universities — guaranteed admission guidance, UK student visa assistance, and IELTS coaching in Kathmandu. Also serving Australia, Canada, USA & New Zealand." />
+    <meta name="keywords" content="best UK consultancy Nepal, UK university admission Nepal, UK student visa Nepal, exclusive UK consultancy Kathmandu, study in UK from Nepal, UK education consultancy Jadibuti, authorized UK university partner Nepal, UK visa consultancy Kathmandu, study abroad Nepal, educational consultancy Kathmandu, IELTS coaching Jadibuti, PTE preparation Nepal, Global Gate Jadibuti, UK study consultancy Jadibuti, best consultancy for UK Nepal" />
     <meta name="author" content="Global Gate Educational Consultancy" />
     <link rel="canonical" href="https://globalgatejadibuti.com/" />
 
@@ -23,17 +33,24 @@
     <!-- Open Graph (Facebook, LinkedIn, WhatsApp previews) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://globalgatejadibuti.com/" />
-    <meta property="og:title" content="Global Gate Educational Consultancy — Jadibuti, Kathmandu" />
-    <meta property="og:description" content="Nepal's trusted study abroad advisors in Jadibuti. University admissions, visa assistance, IELTS/PTE coaching for Australia, Canada, UK, USA & New Zealand." />
-    <meta property="og:image" content="https://globalgatejadibuti.com/og-image.jpg" />
+    <meta property="og:title" content="Best UK Consultancy in Nepal — Global Gate Jadibuti | Exclusive UK University Partner" />
+    <meta property="og:description" content="Nepal's exclusive UK university consultancy in Jadibuti, Kathmandu. Authorized UK partner — admissions, visa, and IELTS coaching for Australia, Canada, UK, USA & New Zealand." />
+    <meta property="og:image" content="https://globalgatejadibuti.com/hearder.webp" />
     <meta property="og:locale" content="en_NP" />
     <meta property="og:site_name" content="Global Gate Educational Consultancy" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Global Gate Educational Consultancy — Jadibuti, Kathmandu" />
-    <meta name="twitter:description" content="Nepal's trusted study abroad advisors in Jadibuti. University admissions, visa assistance, IELTS/PTE coaching." />
-    <meta name="twitter:image" content="https://globalgatejadibuti.com/og-image.jpg" />
+    <meta name="twitter:title" content="Best UK Consultancy in Nepal — Global Gate Jadibuti" />
+    <meta name="twitter:description" content="Nepal's exclusive UK university partner in Jadibuti. UK admissions, visa assistance, and IELTS coaching — also serving Australia, Canada, USA & New Zealand." />
+    <meta name="twitter:image" content="https://globalgatejadibuti.com/hearder.webp" />
+
+    <!-- Performance: preconnect to external origins used by this site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://flagcdn.com" />
+    <link rel="dns-prefetch" href="https://api.emailjs.com" />
 
     <!-- JSON-LD Structured Data: Local Business -->
     <script type="application/ld+json">
@@ -43,9 +60,10 @@
       "name": "Global Gate Educational Consultancy — Jadibuti Branch",
       "alternateName": "Global Gate Jadibuti",
       "url": "https://globalgatejadibuti.com",
-      "logo": "https://globalgatejadibuti.com/src/logo/global_gate.png",
-      "image": "https://globalgatejadibuti.com/src/logo/hearder.webp",
-      "description": "Nepal's trusted study abroad consultancy. University admissions, student visa assistance, IELTS/PTE coaching, and scholarship guidance for Australia, Canada, UK, USA, and New Zealand.",
+      "logo": "https://globalgatejadibuti.com/global_gate.png",
+      "image": "https://globalgatejadibuti.com/hearder.webp",
+      "description": "Nepal's exclusive authorized UK university consultancy in Jadibuti, Kathmandu. Specializing in UK university admissions and UK student visa assistance. Also serving Australia, Canada, USA, and New Zealand for university admissions, visa assistance, IELTS/PTE coaching, and scholarship guidance.",
+      "slogan": "Nepal's Exclusive UK University Partner",
       "telephone": ["015253297", "+977-9862349049"],
       "email": "globalgateedu.jadibuti@gmail.com",
       "address": {
@@ -75,7 +93,11 @@
           "closes": "15:00"
         }
       ],
-      "sameAs": [],
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61589623467706",
+        "https://www.instagram.com/globalgateeduconsult.jadibuti",
+        "https://www.tiktok.com/@globalgateedu.jadibuti"
+      ],
       "areaServed": {
         "@type": "City",
         "name": "Kathmandu"
@@ -84,6 +106,8 @@
         "@type": "OfferCatalog",
         "name": "Study Abroad Services",
         "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UK University Admission — Exclusive Authorized Partner", "description": "As Nepal's exclusive authorized UK university partner, we provide guaranteed admission guidance to top UK universities including University of Manchester, University of Leeds, and University of Sheffield." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UK Student Visa Assistance", "description": "Expert UK Student Route visa application support with 98% approval rate. Document preparation, CAS guidance, and visa interview coaching." } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "University Admission Guidance" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Student Visa Assistance" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IELTS Preparation" } },
@@ -92,6 +116,72 @@
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Career Counseling" } }
         ]
       }
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data: FAQ Page (enables rich snippets in Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is Global Gate Jadibuti the best UK consultancy in Nepal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Global Gate Jadibuti is Nepal's exclusive authorized UK university partner — meaning we have a direct, official relationship with top UK universities that other consultancies do not have. This gives our students priority processing, guaranteed application support, and direct access to UK university admission officers. Our UK visa approval rate stands at 98%, and we specialize exclusively in the UK Student Route visa process from our Jadibuti office in Kathmandu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does the student visa process take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Visa processing times vary by country. Australia and Canada typically take 4–8 weeks, the UK takes 3–4 weeks, and the USA can take 2–3 months. We submit your application as early as possible to avoid delays, and our 98% approval rate means you can count on us to get it right the first time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get a scholarship for studying abroad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — many universities offer merit-based and need-based scholarships for international students. We actively search for scholarship opportunities that match your academic profile, including government-funded programs in Denmark and Finland where tuition can be fully covered."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What IELTS score do I need for Australia or Canada?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most Australian universities require a minimum IELTS band of 6.0–6.5 overall, with no band below 6.0. Canadian institutions typically require 6.0–6.5. Our in-house IELTS preparation classes are specifically designed to help you reach your target band."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide support after I arrive in my destination country?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Our support does not end at the airport. We conduct a comprehensive pre-departure briefing covering accommodation, banking, transport, and cultural adaptation. We also connect you with our alumni network in your destination country so you always have someone to reach out to."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I was rejected by another consultancy. Can you still help me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we frequently help students who have faced rejections. Our team carefully reviews your previous application, identifies what went wrong — whether it was documentation, SOP quality, or university selection — and builds a stronger new application. Many of our successful students came to us after being rejected elsewhere."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the initial counseling session really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, completely free and with no obligation. You can walk into our Jadibuti office any day from Sunday to Friday (8AM–6PM) for a face-to-face counseling session. We assess your profile and give you honest advice about the best options available to you."
+          }
+        }
+      ]
     }
     </script>
   </head>

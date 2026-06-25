@@ -2,6 +2,10 @@ import { useState } from 'react'
 
 const faqs = [
   {
+    q: 'Why is Global Gate Jadibuti the best UK consultancy in Nepal?',
+    a: 'Global Gate Jadibuti is Nepal\'s exclusive authorized UK university partner — meaning we have a direct, official relationship with top UK universities that other consultancies do not have. This gives our students priority processing, guaranteed application support, and direct access to UK university admission officers. Our UK visa approval rate stands at 98%, and we specialize in the UK Student Route visa process from our Jadibuti office in Kathmandu.',
+  },
+  {
     q: 'How long does the student visa process take?',
     a: 'Visa processing times vary by country. Australia and Canada typically take 4–8 weeks, the UK takes 3–4 weeks, and the USA can take 2–3 months. We submit your application as early as possible to avoid delays, and our 98% approval rate means you can count on us to get it right the first time.',
   },
