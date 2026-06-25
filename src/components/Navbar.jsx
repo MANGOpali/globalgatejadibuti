@@ -1,18 +1,26 @@
 import { useState, useEffect } from 'react'
+import { useLocation, Link } from 'react-router-dom'
 import logo from '../logo/global_gate.png'
 
-const links = [
-  { label: 'Home',         href: '#home' },
-  { label: 'About',        href: '#about' },
-  { label: 'Services',     href: '#services' },
-  { label: 'Destinations', href: '#destinations' },
-  { label: 'FAQ',          href: '#faq' },
-  { label: 'Contact',      href: '#contact' },
+const hashLinks = [
+  { label: 'Home',         hash: '#home' },
+  { label: 'About',        hash: '#about' },
+  { label: 'Services',     hash: '#services' },
+  { label: 'Destinations', hash: '#destinations' },
+  { label: 'FAQ',          hash: '#faq' },
+  { label: 'Contact',      hash: '#contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen]         = useState(false)
+  const { pathname } = useLocation()
+  const onHome = pathname === '/'
+
+  const links = hashLinks.map(l => ({
+    label: l.label,
+    href: onHome ? l.hash : `/${l.hash}`,
+  }))
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10)
@@ -50,7 +58,7 @@ export default function Navbar() {
       {/* Main nav */}
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
         <div className="nav-inner">
-          <a href="#home" className="nav-logo">
+          <a href={onHome ? '#home' : '/'} className="nav-logo">
             <img src={logo} alt="Global Gate" className="nav-logo-img" />
             <div className="nav-logo-text">
               <div className="nav-logo-name">Global Gate</div>
@@ -60,6 +68,7 @@ export default function Navbar() {
 
           <ul className="nav-menu">
             {links.map(l => <li key={l.label}><a href={l.href}>{l.label}</a></li>)}
+            <li><Link to="/blog" className={pathname.startsWith('/blog') ? 'nav-blog-active' : ''}>Blog</Link></li>
           </ul>
 
           <div className="nav-right">
@@ -73,7 +82,7 @@ export default function Navbar() {
                 +977 986-2349049
               </a>
             </div>
-            <a href="#contact" className="btn-pill btn-blue btn-sm">
+            <a href={onHome ? '#contact' : '/#contact'} className="btn-pill btn-blue btn-sm">
               Apply Now
               <span className="arrow-circle">→</span>
             </a>
@@ -88,7 +97,8 @@ export default function Navbar() {
           {links.map(l => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
-          <a href="#contact" className="btn-pill btn-blue" onClick={() => setOpen(false)}>
+          <Link to="/blog" onClick={() => setOpen(false)}>Blog</Link>
+          <a href={onHome ? '#contact' : '/#contact'} className="btn-pill btn-blue" onClick={() => setOpen(false)}>
             Apply Now <span className="arrow-circle">→</span>
           </a>
         </div>
