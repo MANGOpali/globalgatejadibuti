@@ -42,7 +42,7 @@ export default function BlogPostPage() {
 
   useEffect(() => {
     if (!post) return
-    const url = `https://globalgatejadibuti.com/blog/${post.slug}`
+    const url = `https://globalgateconsultancyjadibuti.com.np/blog/${post.slug}`
 
     document.title = post.metaTitle
 
@@ -73,12 +73,12 @@ export default function BlogPostPage() {
       author: {
         '@type': 'Organization',
         name: 'Global Gate Educational Consultancy — Jadibuti Branch',
-        url: 'https://globalgatejadibuti.com',
+        url: 'https://globalgateconsultancyjadibuti.com.np',
       },
       publisher: {
         '@type': 'Organization',
         name: 'Global Gate Educational Consultancy',
-        logo: { '@type': 'ImageObject', url: 'https://globalgatejadibuti.com/global_gate.png' },
+        logo: { '@type': 'ImageObject', url: 'https://globalgateconsultancyjadibuti.com.np/global_gate.png' },
       },
     }
 
@@ -94,14 +94,14 @@ export default function BlogPostPage() {
     return () => {
       const s = document.getElementById('article-ld')
       if (s) s.remove()
-      setMeta('link[rel="canonical"]',           'href',    'https://globalgatejadibuti.com/')
-      setMeta('meta[property="og:url"]',         'content', 'https://globalgatejadibuti.com/')
+      setMeta('link[rel="canonical"]',           'href',    'https://globalgateconsultancyjadibuti.com.np/')
+      setMeta('meta[property="og:url"]',         'content', 'https://globalgateconsultancyjadibuti.com.np/')
       setMeta('meta[property="og:title"]',       'content', 'Best UK Consultancy in Nepal — Global Gate Jadibuti | Exclusive UK University Partner')
       setMeta('meta[property="og:description"]', 'content', "Nepal's exclusive authorized UK university consultancy in Jadibuti, Kathmandu.")
-      setMeta('meta[property="og:image"]',       'content', 'https://globalgatejadibuti.com/hearder.webp')
+      setMeta('meta[property="og:image"]',       'content', 'https://globalgateconsultancyjadibuti.com.np/hearder.webp')
       setMeta('meta[name="twitter:title"]',      'content', 'Best UK Consultancy in Nepal — Global Gate Jadibuti')
       setMeta('meta[name="twitter:description"]','content', "Nepal's exclusive UK university partner in Jadibuti.")
-      setMeta('meta[name="twitter:image"]',      'content', 'https://globalgatejadibuti.com/hearder.webp')
+      setMeta('meta[name="twitter:image"]',      'content', 'https://globalgateconsultancyjadibuti.com.np/hearder.webp')
     }
   }, [post])
 

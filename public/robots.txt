@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://globalgatejadibuti.com/sitemap.xml
+Sitemap: https://globalgateconsultancyjadibuti.com.np/sitemap.xml

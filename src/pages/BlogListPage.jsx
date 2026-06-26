@@ -11,7 +11,7 @@ export default function BlogListPage() {
   useEffect(() => {
     const title = 'UK Study Abroad Blog — Visa Guides, University Tips & IELTS Advice | Global Gate Jadibuti'
     const description = "Expert guides for Nepali students studying in the UK — visa process, university rankings, IELTS tips, cost breakdowns, and post-study work rights. From Nepal's exclusive UK consultancy in Jadibuti."
-    const url = 'https://globalgatejadibuti.com/blog'
+    const url = 'https://globalgateconsultancyjadibuti.com.np/blog'
 
     document.title = title
 
@@ -32,8 +32,8 @@ export default function BlogListPage() {
 
     return () => {
       const setM = (sel, attr, val) => { const el = document.querySelector(sel); if (el) el.setAttribute(attr, val) }
-      setM('link[rel="canonical"]', 'href', 'https://globalgatejadibuti.com/')
-      setM('meta[property="og:url"]', 'content', 'https://globalgatejadibuti.com/')
+      setM('link[rel="canonical"]', 'href', 'https://globalgateconsultancyjadibuti.com.np/')
+      setM('meta[property="og:url"]', 'content', 'https://globalgateconsultancyjadibuti.com.np/')
     }
   }, [])
 
