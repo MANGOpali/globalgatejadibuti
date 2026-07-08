@@ -82,6 +82,16 @@ export default function BlogPostPage() {
       },
     }
 
+    const breadcrumbJson = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home',  item: 'https://globalgateconsultancyjadibuti.com.np/' },
+        { '@type': 'ListItem', position: 2, name: 'Blog',  item: 'https://globalgateconsultancyjadibuti.com.np/blog' },
+        { '@type': 'ListItem', position: 3, name: post.title, item: url },
+      ],
+    }
+
     let script = document.getElementById('article-ld')
     if (!script) {
       script = document.createElement('script')
@@ -91,9 +101,20 @@ export default function BlogPostPage() {
     }
     script.textContent = JSON.stringify(ldJson)
 
+    let breadcrumbScript = document.getElementById('breadcrumb-ld')
+    if (!breadcrumbScript) {
+      breadcrumbScript = document.createElement('script')
+      breadcrumbScript.id = 'breadcrumb-ld'
+      breadcrumbScript.type = 'application/ld+json'
+      document.head.appendChild(breadcrumbScript)
+    }
+    breadcrumbScript.textContent = JSON.stringify(breadcrumbJson)
+
     return () => {
       const s = document.getElementById('article-ld')
       if (s) s.remove()
+      const b = document.getElementById('breadcrumb-ld')
+      if (b) b.remove()
       setMeta('link[rel="canonical"]',           'href',    'https://globalgateconsultancyjadibuti.com.np/')
       setMeta('meta[property="og:url"]',         'content', 'https://globalgateconsultancyjadibuti.com.np/')
       setMeta('meta[property="og:title"]',       'content', 'Best UK Consultancy in Nepal — Global Gate Jadibuti | Exclusive UK University Partner')

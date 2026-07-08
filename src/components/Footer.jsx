@@ -1,7 +1,21 @@
+import { Link } from 'react-router-dom'
 import logoWithBg from '../logo/global_gate.png'
 
-const services = ['Career Counseling','University Admission','Visa Assistance','IELTS Preparation','PTE Coaching','Scholarship Guidance']
-const dests    = ['Australia','Canada','New Zealand','United Kingdom','United States']
+const services = [
+  { label: 'Career Counseling',    to: '/#services' },
+  { label: 'University Admission', to: '/#services' },
+  { label: 'Visa Assistance',      to: '/#services' },
+  { label: 'IELTS Preparation',    to: '/ielts-classes-jadibuti' },
+  { label: 'PTE Coaching',         to: '/pte-classes-jadibuti' },
+  { label: 'Scholarship Guidance', to: '/scholarships' },
+]
+const dests = [
+  { label: 'Australia',      slug: 'study-in-australia-from-nepal'   },
+  { label: 'Canada',         slug: 'study-in-canada-from-nepal'      },
+  { label: 'New Zealand',    slug: 'study-in-new-zealand-from-nepal' },
+  { label: 'United Kingdom', slug: 'study-in-uk-from-nepal'          },
+  { label: 'United States',  slug: 'study-in-usa-from-nepal'         },
+]
 
 export default function Footer() {
   return (
@@ -45,13 +59,13 @@ export default function Footer() {
             {/* Services */}
             <div className="f-col">
               <div className="f-col-title">Services</div>
-              <ul>{services.map(s => <li key={s}><a href="#services">{s}</a></li>)}</ul>
+              <ul>{services.map(s => <li key={s.label}><Link to={s.to}>{s.label}</Link></li>)}</ul>
             </div>
 
             {/* Destinations */}
             <div className="f-col">
               <div className="f-col-title">Destinations</div>
-              <ul>{dests.map(d => <li key={d}><a href="#destinations">{d}</a></li>)}</ul>
+              <ul>{dests.map(d => <li key={d.slug}><Link to={`/${d.slug}`}>{d.label}</Link></li>)}</ul>
             </div>
 
             {/* Contact */}

@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom'
+
 const flags = [
-  { code: 'au', name: 'Australia'   },
-  { code: 'ca', name: 'Canada'      },
-  { code: 'nz', name: 'New Zealand' },
-  { code: 'gb', name: 'UK'          },
-  { code: 'us', name: 'USA'         },
+  { code: 'au', name: 'Australia',    slug: 'study-in-australia-from-nepal'   },
+  { code: 'ca', name: 'Canada',       slug: 'study-in-canada-from-nepal'      },
+  { code: 'nz', name: 'New Zealand',  slug: 'study-in-new-zealand-from-nepal' },
+  { code: 'gb', name: 'UK',           slug: 'study-in-uk-from-nepal'          },
+  { code: 'us', name: 'USA',          slug: 'study-in-usa-from-nepal'         },
 ]
 
 const RADIUS = 140
@@ -99,10 +101,11 @@ export default function Destinations() {
 
               {/* Flag nodes */}
               {flags.map((f, i) => (
-                <div
+                <Link
                   key={f.code}
+                  to={`/${f.slug}`}
                   className="orbit-node"
-                  style={{ animationDelay: `-${(i / flags.length) * 22}s` }}
+                  style={{ animationDelay: `-${(i / flags.length) * 22}s`, textDecoration: 'none' }}
                 >
                   <div className="orbit-node-glow" />
                   <img
@@ -111,12 +114,24 @@ export default function Destinations() {
                     className="orbit-flag-img"
                   />
                   <span className="orbit-flag-name">{f.name}</span>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
 
         </div>
+
+        {/* Static destination cards — always clickable */}
+        <div className="dest-cards-row">
+          {flags.map(f => (
+            <Link key={f.code} to={`/${f.slug}`} className="dest-card">
+              <img src={`https://flagcdn.com/w80/${f.code}.png`} alt={`${f.name} flag`} width="36" height="26" style={{ borderRadius: 3 }} />
+              <span className="dest-card-name">{f.name}</span>
+              <span className="dest-card-arrow">→</span>
+            </Link>
+          ))}
+        </div>
+
       </div>
     </section>
   )
