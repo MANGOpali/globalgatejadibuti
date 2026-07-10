@@ -7,10 +7,10 @@ import Hero           from '../components/Hero'
 import About          from '../components/About'
 import Services       from '../components/Services'
 import Destinations   from '../components/Destinations'
-import Testimonials   from '../components/Testimonials'
+import GoogleReviews  from '../components/GoogleReviews'
 import FAQ            from '../components/FAQ'
-import Stats          from '../components/Stats'
 import Awards         from '../components/Awards'
+import UniPartners    from '../components/UniPartners'
 import Blog           from '../components/Blog'
 import Contact        from '../components/Contact'
 import Footer         from '../components/Footer'
@@ -28,10 +28,10 @@ export default function HomePage() {
       <About />
       <Services />
       <Destinations />
-      <Testimonials />
+      <GoogleReviews />
       <FAQ />
-      <Stats />
       <Awards />
+      <UniPartners />
       <Blog />
       <Contact />
       <Footer />

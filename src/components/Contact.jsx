@@ -34,7 +34,7 @@ const INFO = [
   { Icon: PhoneIcon, label: 'Telephone',    value: '015253297',                          sub: 'Sun–Fri  8 AM – 6 PM',     href: 'tel:015253297' },
   { Icon: PhoneIcon, label: 'WhatsApp',    value: '+977 986-2349049',                   sub: 'Chat with us on WhatsApp',  href: 'https://wa.me/9779862349049' },
   { Icon: MailIcon,  label: 'Email Us',     value: 'globalgateedu.jadibuti@gmail.com',   sub: 'We reply within 24 hours', href: 'mailto:globalgateedu.jadibuti@gmail.com' },
-  { Icon: PinIcon,   label: 'Visit Us',     value: 'Jadibuti, Kathmandu',                sub: 'Near Jadibuti Bus Park',   href: 'https://maps.google.com/?q=M9F3%2BVC9+Kathmandu+44600+Nepal' },
+  { Icon: PinIcon,   label: 'Visit Us',     value: 'Jadibuti, Kathmandu',                sub: 'Near Jadibuti Bus Park',   href: 'https://www.google.com/maps/place/Global+Gate+Educational+Consultancy+Jadibuti/@27.674667,85.3533701,20.75z/data=!4m14!1m7!3m6!1s0x39eb198a307baabf:0x53a05069e2ec6273!2sM9F3%2BVC9,+Kathmandu+44600!3b1!8m2!3d27.6746625!4d85.3536094!3m5!1s0x39eb190025d2c649:0x228047147a2fb3a3!8m2!3d27.67473!4d85.3536363!16s%2Fg%2F11z7rlkfk7' },
   { Icon: ClockIcon, label: 'Office Hours', value: 'Sun–Fri: 8 AM – 6 PM',              sub: 'Saturday: Closed',         href: null },
 ]
 
@@ -118,7 +118,7 @@ export default function Contact() {
             </div>
 
             <a
-              href="https://maps.google.com/?q=M9F3%2BVC9+Kathmandu+44600+Nepal"
+              href="https://www.google.com/maps/place/Global+Gate+Educational+Consultancy+Jadibuti/@27.674667,85.3533701,20.75z/data=!4m14!1m7!3m6!1s0x39eb198a307baabf:0x53a05069e2ec6273!2sM9F3%2BVC9,+Kathmandu+44600!3b1!8m2!3d27.6746625!4d85.3536094!3m5!1s0x39eb190025d2c649:0x228047147a2fb3a3!8m2!3d27.67473!4d85.3536363!16s%2Fg%2F11z7rlkfk7"
               target="_blank" rel="noreferrer"
               className="cp-maps-btn"
             >

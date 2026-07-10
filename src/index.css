@@ -2141,3 +2141,120 @@ button { cursor: pointer; font-family: var(--font-body); }
   .vid-grid { grid-template-columns: 1fr; gap: 20px; padding: 32px 0 48px; }
 }
 
+/* ============================================================
+   UNIVERSITY PARTNERS TICKER
+   ============================================================ */
+.uni-partners {
+  padding: 72px 0 0;
+  background: #fff;
+  border-bottom: 1px solid var(--gray-200);
+  overflow: hidden;
+}
+.uni-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.uni-sub {
+  font-size: 14px; color: var(--gray-500); max-width: 540px;
+  margin: 12px auto 0; line-height: 1.75;
+}
+.uni-ticker-wrap {
+  position: relative;
+  padding: 28px 0 40px;
+  overflow: hidden;
+}
+.uni-ticker-wrap::before,
+.uni-ticker-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+  pointer-events: none;
+}
+.uni-ticker-wrap::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
+.uni-ticker-wrap::after  { right: 0; background: linear-gradient(to left, #fff, transparent); }
+.uni-ticker {
+  display: flex; gap: 12px; width: max-content;
+  animation: uniScroll 40s linear infinite;
+}
+.uni-ticker:hover { animation-play-state: paused; }
+@keyframes uniScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.uni-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--gray-50); border: 1px solid var(--gray-200);
+  border-radius: var(--r-full); padding: 9px 18px;
+  font-size: 13px; font-weight: 600; color: var(--navy-dark);
+  white-space: nowrap; flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.uni-pill:hover { background: rgba(26,62,143,0.05); border-color: var(--navy); }
+.uni-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--navy); opacity: 0.4; flex-shrink: 0;
+}
+
+/* ============================================================
+   GOOGLE REVIEWS
+   ============================================================ */
+.gr-section {
+  padding: 80px 0;
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+.gr-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; margin-bottom: 36px; flex-wrap: wrap;
+}
+.gr-google-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: #fff; border: 1px solid var(--gray-200);
+  border-radius: var(--r-full); padding: 10px 20px;
+  font-size: 13px; font-weight: 600; color: var(--text);
+  text-decoration: none; white-space: nowrap; flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.gr-google-btn:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-1px); }
+.gr-rating-bar {
+  display: flex; align-items: center; gap: 16px;
+  background: #fff; border: 1px solid var(--gray-200);
+  border-radius: var(--r-lg); padding: 18px 24px;
+  margin-bottom: 32px; width: fit-content;
+}
+.gr-rating-score {
+  font-size: 2.4rem; font-weight: 800; color: var(--navy-dark);
+  font-family: var(--font-display); line-height: 1;
+}
+.gr-stars { display: flex; gap: 2px; margin-bottom: 4px; }
+.gr-rating-label { font-size: 12px; color: var(--gray-400); font-weight: 500; }
+.gr-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+}
+.gr-card {
+  background: #fff; border: 1px solid var(--gray-200);
+  border-radius: var(--r-lg); padding: 24px 26px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.gr-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.gr-card-top { display: flex; align-items: center; gap: 12px; }
+.gr-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; flex-shrink: 0;
+}
+.gr-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.gr-meta { font-size: 12px; color: var(--gray-400); margin-top: 1px; }
+.gr-google-icon { margin-left: auto; flex-shrink: 0; }
+.gr-text {
+  font-size: 13.5px; color: var(--gray-500); line-height: 1.75;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .gr-grid { grid-template-columns: 1fr; }
+  .gr-header { flex-direction: column; }
+}
+
