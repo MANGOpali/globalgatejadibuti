@@ -5,6 +5,7 @@ import BlogPostPage from './pages/BlogPostPage'
 import DestinationPage from './pages/DestinationPage'
 import ServicePage from './pages/ServicePage'
 import LocalPage from './pages/LocalPage'
+import VideosPage from './pages/VideosPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
       <Route path="/study-abroad-consultancy-koteshwor" element={<LocalPage />} />
       <Route path="/study-abroad-consultancy-baneshwor" element={<LocalPage />} />
       <Route path="/study-abroad-consultancy-pepsicola" element={<LocalPage />} />
+      <Route path="/videos" element={<VideosPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )

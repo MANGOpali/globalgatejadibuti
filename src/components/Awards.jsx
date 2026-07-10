@@ -1,34 +1,51 @@
-const IconRosette = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2l2.09 4.26L18.5 7.1l-3.25 3.16.77 4.47L12 12.5l-4.02 2.23.77-4.47L5.5 7.1l4.41-.84z"/>
-    <circle cx="12" cy="12" r="3"/>
-    <path d="M12 15v4M10 19h4"/>
-  </svg>
-)
-const IconShieldStar = () => (
+const IconPartner = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-    <path d="M12 8l1.09 2.26L16 10.73l-2 1.96.47 2.77L12 14.25l-2.47 1.21.47-2.77-2-1.96 2.91-.47z"/>
+    <path d="M9 12l2 2 4-4"/>
   </svg>
 )
-const IconGradCap = () => (
+const IconVisa = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+    <rect x="2" y="5" width="20" height="14" rx="2"/>
+    <path d="M2 10h20"/>
+    <path d="M6 15h4M14 15h4"/>
   </svg>
 )
-const IconGlobe = () => (
+const IconStudents = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+  </svg>
+)
+const IconYears = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10"/>
-    <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+    <path d="M12 6v6l4 2"/>
   </svg>
 )
 
-const awards = [
-  { Icon: IconRosette,   title: 'Best Educational Consultancy',    year: 'Nepal 2023' },
-  { Icon: IconShieldStar,title: 'Top Visa Success Rate Award',     year: 'Australia 2022' },
-  { Icon: IconGradCap,   title: 'Excellence in Student Counseling',year: 'Canada Partner 2023' },
-  { Icon: IconGlobe,     title: 'Global Education Partner of Year',year: 'UK Universities 2022' },
+const credentials = [
+  {
+    Icon: IconPartner,
+    title: "Nepal's Exclusive UK University Partner",
+    desc: 'Officially authorized by top UK universities — the only consultancy in Nepal with this direct partnership.',
+  },
+  {
+    Icon: IconVisa,
+    title: '98% Visa Approval Rate',
+    desc: 'One of the highest student visa success rates in Nepal across UK, Australia, Canada, NZ & USA.',
+  },
+  {
+    Icon: IconStudents,
+    title: '5,000+ Students Placed',
+    desc: 'Thousands of Nepali students successfully studying abroad — from Jadibuti to universities worldwide.',
+  },
+  {
+    Icon: IconYears,
+    title: '10+ Years of Experience',
+    desc: 'Trusted by Nepali families since 2014 — backed by Global Gate\'s decade-long track record.',
+  },
 ]
 
 export default function Awards() {
@@ -36,19 +53,19 @@ export default function Awards() {
     <section className="awards">
       <div className="wrap">
         <div className="awards-header">
-          <span className="badge badge-light">Recognition</span>
+          <span className="badge badge-light">Why Trust Us</span>
           <h2 className="s-title s-title-lg">
-            Awards &amp; <em>Achievements</em>
+            Our Credentials &amp; <em>Track Record</em>
           </h2>
         </div>
         <div className="awards-grid reveal-group">
-          {awards.map(({ Icon, title, year }) => (
+          {credentials.map(({ Icon, title, desc }) => (
             <div className="award-card" key={title}>
               <div className="award-icon-wrap">
                 <Icon />
               </div>
               <div className="award-title">{title}</div>
-              <div className="award-year">{year}</div>
+              <div className="award-year">{desc}</div>
             </div>
           ))}
         </div>

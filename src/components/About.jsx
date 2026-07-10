@@ -22,7 +22,7 @@ export default function About() {
                   { n:'5000+', l:'Students Placed' },
                   { n:'98%',   l:'Visa Success' },
                   { n:'200+',  l:'Universities' },
-                  { n:'8+',    l:'Countries' },
+                  { n:'5',     l:'Countries' },
                 ].map(s => (
                   <div className="ac-stat" key={s.l}>
                     <div className="ac-stat-n">{s.n}</div>

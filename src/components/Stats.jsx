@@ -19,7 +19,7 @@ function CountUp({ target, suffix, duration = 2000, active }) {
 const data = [
   { target: 5000, suffix: '+', label: 'Students Placed',         desc: 'Successfully placed in top universities worldwide' },
   { target: 98,   suffix: '%', label: 'Visa Approval Rate',      desc: 'One of the highest approval rates in Nepal' },
-  { target: 200,  suffix: '+', label: 'Partner Universities',    desc: 'Across 8 countries on 4 continents' },
+  { target: 200,  suffix: '+', label: 'Partner Universities',    desc: 'Across 5 top study destinations worldwide' },
   { target: 10,   suffix: '+', label: 'Years of Experience',     desc: 'Trusted by Nepali families since 2014' },
 ]
 

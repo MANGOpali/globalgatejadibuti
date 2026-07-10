@@ -19,7 +19,7 @@ export const localPages = [
       phone: '015253297',
       whatsapp: '+977 986-2349049',
       hours: 'Sunday to Friday: 8:00 AM – 6:00 PM (Closed Saturday)',
-      mapLink: 'https://maps.app.goo.gl/example',
+      mapLink: 'https://maps.google.com/?q=M9F3%2BVC9+Kathmandu+44600+Nepal',
     },
     directions: [
       { from: 'Jadibuti Bus Park', how: 'Walk 2 minutes east along the main road — we are directly near the bus park.' },
@@ -84,7 +84,7 @@ export const localPages = [
       phone: '015253297',
       whatsapp: '+977 986-2349049',
       hours: 'Sunday to Friday: 8:00 AM – 6:00 PM (Closed Saturday)',
-      mapLink: 'https://maps.app.goo.gl/example',
+      mapLink: 'https://maps.google.com/?q=M9F3%2BVC9+Kathmandu+44600+Nepal',
     },
     directions: [
       { from: 'Jadibuti Bus Park', how: 'Walk 2 minutes east along the main road — we are directly near the bus park.' },
@@ -149,7 +149,7 @@ export const localPages = [
       phone: '015253297',
       whatsapp: '+977 986-2349049',
       hours: 'Sunday to Friday: 8:00 AM – 6:00 PM (Closed Saturday)',
-      mapLink: 'https://maps.app.goo.gl/example',
+      mapLink: 'https://maps.google.com/?q=M9F3%2BVC9+Kathmandu+44600+Nepal',
     },
     directions: [
       { from: 'Koteshwor Chowk', how: 'Walk east along the main ring road for 5–7 minutes, or board any Bhaktapur-bound microbus. Get off at Jadibuti Bus Park. We are right there.' },
@@ -213,7 +213,7 @@ export const localPages = [
       phone: '015253297',
       whatsapp: '+977 986-2349049',
       hours: 'Sunday to Friday: 8:00 AM – 6:00 PM (Closed Saturday)',
-      mapLink: 'https://maps.app.goo.gl/example',
+      mapLink: 'https://maps.google.com/?q=M9F3%2BVC9+Kathmandu+44600+Nepal',
     },
     directions: [
       { from: 'New Baneshwor / Baneshwor Chowk', how: 'Take the ring road east toward Koteshwor and continue to Jadibuti. Taxi takes approximately 12–15 minutes. Microbus via Koteshwor to Jadibuti Bus Park takes 15–20 minutes.' },
@@ -277,7 +277,7 @@ export const localPages = [
       phone: '015253297',
       whatsapp: '+977 986-2349049',
       hours: 'Sunday to Friday: 8:00 AM – 6:00 PM (Closed Saturday)',
-      mapLink: 'https://maps.app.goo.gl/example',
+      mapLink: 'https://maps.google.com/?q=M9F3%2BVC9+Kathmandu+44600+Nepal',
     },
     directions: [
       { from: 'Pepsicola Chowk', how: 'Head west along the Araniko Highway (Kathmandu direction) for approximately 2–3 km. You will reach Jadibuti Bus Park in about 10 minutes by taxi or 12–15 minutes by microbus.' },
