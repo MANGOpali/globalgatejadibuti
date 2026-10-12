@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { FaqList } from './ui'
 
 const faqs = [
   {
     q: 'Why is Global Gate Jadibuti the best UK consultancy in Nepal?',
-    a: 'Global Gate Jadibuti is Nepal\'s exclusive authorized UK university partner — meaning we have a direct, official relationship with top UK universities that other consultancies do not have. This gives our students priority processing, guaranteed application support, and direct access to UK university admission officers. Our UK visa approval rate stands at 98%, and we specialize in the UK Student Route visa process from our Jadibuti office in Kathmandu.',
+    a: "Global Gate Jadibuti is Nepal's exclusive authorized UK university partner — meaning we have a direct, official relationship with top UK universities that other consultancies do not have. This gives our students priority processing, guaranteed application support, and direct access to UK university admission officers. Our UK visa approval rate stands at 98%, and we specialize in the UK Student Route visa process from our Jadibuti office in Kathmandu.",
   },
   {
     q: 'How long does the student visa process take?',
@@ -32,49 +32,15 @@ const faqs = [
 ]
 
 export default function FAQ() {
-  const [open, setOpen] = useState(null)
-
   return (
-    <section className="faq" id="faq">
-      <div className="wrap">
-        <div className="faq-grid">
-
-          {/* Left */}
-          <div>
-            <span className="badge badge-light">Common Questions</span>
-            <h2 className="s-title s-title-lg">
-              Got Questions?<br />
-              <em>We Have Answers</em>
-            </h2>
-            <p className="blockquote" style={{ marginBottom: 28 }}>
-              Everything you need to know about studying abroad,
-              visa requirements, scholarships, and how we can help
-              you achieve your international education goals.
-            </p>
-            <a href="#contact" className="btn-pill btn-blue">
-              Contact Us Directly
-              <span className="arrow-circle">→</span>
-            </a>
-          </div>
-
-          {/* Right — accordion */}
-          <div>
-            <div className="faq-items reveal-group">
-              {faqs.map((f, i) => (
-                <div className={`faq-item${open === i ? ' open' : ''}`} key={i}>
-                  <button className="faq-q" onClick={() => setOpen(open === i ? null : i)}>
-                    <span className="faq-q-text">{f.q}</span>
-                    <span className="faq-icon">{open === i ? '−' : '+'}</span>
-                  </button>
-                  <div className="faq-a">
-                    <p>{f.a}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
+    <section className="section" id="faq">
+      <div className="wrap section-rule faq-layout">
+        <div className="faq-intro">
+          <span className="mono">FAQ</span>
+          <h2 className="h3">Questions students ask first.</h2>
+          <p className="serif muted">Still unsure? Message us on WhatsApp — we reply even after office hours.</p>
         </div>
+        <FaqList faqs={faqs} />
       </div>
     </section>
   )

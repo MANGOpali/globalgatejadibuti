@@ -1,48 +1,27 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { videos } from '../data/videos'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import WhatsApp from '../components/WhatsApp'
-import Cursor from '../components/Cursor'
-import FloatingDot from '../components/FloatingDot'
+import Layout from '../components/Layout'
+import { ArrowRight, Crumbs, CtaSlim } from '../components/ui'
 
-function VideoCard({ video, activeId, setActiveId }) {
+function VideoFrame({ video, activeId, setActiveId }) {
   const playing = activeId === video.id
-  const thumb = `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`
-
   return (
-    <div className="vid-card">
-      <div className="vid-thumb" onClick={() => setActiveId(video.id)}>
-        {playing ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${video.id}?autoplay=1`}
-            title={video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        ) : (
-          <>
-            <img src={thumb} alt={video.title} loading="lazy" />
-            <div className="vid-play-btn">
-              <svg viewBox="0 0 24 24" fill="white" width="48" height="48">
-                <circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.6)" />
-                <polygon points="10,8 18,12 10,16" fill="white" />
-              </svg>
-            </div>
-          </>
-        )}
-      </div>
-      <div className="vid-body">
-        <span className="blog-cat">{video.category}</span>
-        <div className="blog-meta">{video.date}</div>
-        <div className="vid-title">{video.title}</div>
-        {!playing && (
-          <button className="vid-watch-btn" onClick={() => setActiveId(video.id)}>
-            Watch Video →
+    <div className="vid-frame">
+      {playing ? (
+        <iframe
+          src={`https://www.youtube.com/embed/${video.id}?autoplay=1`}
+          title={video.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        <>
+          <img src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} alt="" loading="lazy" width="480" height="360" />
+          <button type="button" onClick={() => setActiveId(video.id)} aria-label={`Play video: ${video.title}`}>
+            <span className="play"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg></span>
           </button>
-        )}
-      </div>
+        </>
+      )}
     </div>
   )
 }
@@ -115,61 +94,50 @@ export default function VideosPage() {
     }
   }, [])
 
+  const [first, ...more] = videos
+
   return (
-    <>
-      <Cursor />
-      <FloatingDot />
-      <Navbar />
-      <main className="blp">
-
-        {/* Hero */}
-        <section className="blp-hero">
-          <div className="wrap">
-            <div className="blp-breadcrumb">
-              <Link to="/">Home</Link>
-              <span>/</span>
-              <span>Videos</span>
-            </div>
-            <span className="badge badge-light">Watch &amp; Learn</span>
-            <h1 className="blp-title">
-              Study Abroad<br />
-              <em>Video Guides</em>
-            </h1>
-            <p className="blp-subtitle">
-              Expert videos on UK visa interviews, study abroad tips, and IELTS
-              guidance for Nepali students — straight from our Jadibuti office.
-            </p>
+    <Layout>
+      <section className="wrap" style={{ paddingTop: 56 }}>
+        <Crumbs items={[{ label: 'Home', to: '/' }, { label: 'Videos' }]} />
+        <div className="sec-head">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18, maxWidth: 780 }}>
+            <span className="mono">GLOBAL GATE ON YOUTUBE</span>
+            <h1 className="h1">Watch before you apply.</h1>
           </div>
-        </section>
+          <a href="https://www.youtube.com/@GlobalGateEduJadibuti" target="_blank" rel="noopener noreferrer" className="btn btn-red">Subscribe on YouTube ↗</a>
+        </div>
 
-        {/* Videos grid */}
-        <section className="blp-grid-wrap">
-          <div className="wrap">
-            <div className="vid-grid">
-              {videos.map(v => (
-                <VideoCard key={v.id} video={v} activeId={activeId} setActiveId={setActiveId} />
-              ))}
+        {first && (
+          <div className="vid-featured">
+            <div className="player"><VideoFrame video={first} activeId={activeId} setActiveId={setActiveId} /></div>
+            <div className="copy">
+              <span className="cat">LATEST · {first.category}</span>
+              <h2 style={{ fontWeight: 600, fontSize: 'clamp(24px, 2.6vw, 34px)', lineHeight: 1.1, letterSpacing: '-.03em' }}>{first.title}</h2>
+              <span className="mono">{first.date}</span>
             </div>
           </div>
-        </section>
+        )}
+      </section>
 
-        {/* CTA */}
-        <section className="blp-cta">
-          <div className="wrap blp-cta-inner">
-            <div>
-              <h2 className="blp-cta-title">Ready to Start Your Journey?</h2>
-              <p className="blp-cta-sub">Nepal's exclusive UK university partner — free counseling in Jadibuti.</p>
+      <section className="wrap" style={{ paddingTop: 24, paddingBottom: 24 }}>
+        <div className="grid grid-300">
+          {more.map(v => (
+            <div className="vid-card" key={v.id}>
+              <VideoFrame video={v} activeId={activeId} setActiveId={setActiveId} />
+              <div className="copy">
+                <span className="cat">{v.category}</span>
+                <h3>{v.title}</h3>
+                <span className="mono">{v.date}</span>
+              </div>
             </div>
-            <Link to="/#contact" className="btn-pill btn-white">
-              Book Free Session
-              <span className="arrow-circle">→</span>
-            </Link>
-          </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-      </main>
-      <Footer />
-      <WhatsApp />
-    </>
+      <CtaSlim tone="navy" label="FREE COUNSELING" title="Prefer to ask in person? Visit us in Jadibuti.">
+        <a href="/#contact" className="btn btn-white">Book free counseling <ArrowRight /></a>
+      </CtaSlim>
+    </Layout>
   )
 }
