@@ -1,137 +1,55 @@
 import { Link } from 'react-router-dom'
+import { destinations } from '../data/destinations'
+import { SectionHead } from './ui'
 
-const flags = [
-  { code: 'au', name: 'Australia',    slug: 'study-in-australia-from-nepal'   },
-  { code: 'ca', name: 'Canada',       slug: 'study-in-canada-from-nepal'      },
-  { code: 'nz', name: 'New Zealand',  slug: 'study-in-new-zealand-from-nepal' },
-  { code: 'gb', name: 'UK',           slug: 'study-in-uk-from-nepal'          },
-  { code: 'us', name: 'USA',          slug: 'study-in-usa-from-nepal'         },
+const resize = (url) => url.replace(/w=\d+&h=\d+/, 'w=700&h=520')
+
+const cards = [
+  ...destinations.map((d, i) => ({
+    key: d.slug,
+    to: `/${d.slug}`,
+    country: d.country,
+    role: d.tagline,
+    facts: `${d.stats[0].n} ${d.stats[0].l}\n${d.stats[1].n} ${d.stats[1].l}`.toUpperCase(),
+    img: resize(d.heroImg),
+    alt: `Study in ${d.country}`,
+    dot: i === 0 ? '#C8202F' : '#1B3A6B',
+  })),
+  { key: 'japan', href: '/#contact', country: 'Japan', role: 'Language school + university', facts: 'JAPANESE LANGUAGE PATHWAY\nPART-TIME WORK ALLOWED', img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=700&h=520&fit=crop&auto=format', alt: 'Tokyo street at night', dot: '#1B3A6B' },
+  { key: 'korea', href: '/#contact', country: 'South Korea', role: 'Language + degree programs', facts: 'KOREAN LANGUAGE PATHWAY\nD-2 / D-4 STUDENT VISA', img: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=700&h=520&fit=crop&auto=format', alt: 'Seoul street with neon signs', dot: '#1B3A6B' },
 ]
-
-const RADIUS = 140
-const SIZE   = 60
 
 export default function Destinations() {
   return (
-    <section className="destinations" id="destinations">
-      <div className="wrap">
-        <div className="dest-grid">
-
-          {/* Left — text */}
-          <div className="dest-text reveal">
-            <span className="badge badge-dark">Study Destinations</span>
-            <h2 className="s-title s-title-lg s-title-white">
-              5 Countries,<br />
-              <em>Endless Possibilities</em>
-            </h2>
-            <p className="blockquote blockquote-white" style={{ marginBottom: 28 }}>
-              We have established partnerships with leading universities
-              across 5 countries. Choose your dream destination and we
-              handle every step — from application to visa approval.
-            </p>
-            <ul className="dest-visa-list">
-              {[
-                'Student Visa Guidance & Processing',
-                'University Application & Admission',
-                'Scholarship & Financial Aid Search',
-                'IELTS / PTE / TOEFL Preparation',
-                'Pre-Departure & Post-Arrival Support',
-                'Alumni Network in Every Destination',
-              ].map(item => <li key={item}>{item}</li>)}
-            </ul>
-            <a href="#contact" className="btn-pill btn-white">
-              Book Free Counseling
-              <span className="arrow-circle">→</span>
-            </a>
+    <section className="section" id="destinations">
+      <div className="wrap section-rule">
+        <SectionHead
+          label="OUR DESTINATIONS"
+          title="Seven countries. One honest plan."
+          aside="Nepal's exclusive authorized UK university partner — with expert routes to Australia, Canada, New Zealand, the USA, Japan and South Korea."
+        >
+          <div className="stat-pair">
+            <div><b>5000+</b><span>students<br />placed</span></div>
+            <div><b>98%</b><span>visa<br />success</span></div>
           </div>
-
-          {/* Right — premium orbit */}
-          <div className="orbit-wrap">
-            <div className="orbit-scene">
-
-              {/* Ambient glow behind everything */}
-              <div className="orbit-glow" />
-
-              {/* Outer decorative ring */}
-              <div className="orbit-ring orbit-ring-outer" />
-
-              {/* Main orbit ring */}
-              <div className="orbit-ring orbit-ring-main" />
-
-              {/* Inner decorative ring */}
-              <div className="orbit-ring orbit-ring-inner" />
-
-              {/* Travelling light dot on main ring */}
-              <div className="orbit-light-dot" />
-
-              {/* Centre — compass rose */}
-              <div className="orbit-center">
-                <div className="orbit-globe-inner">
-                  <svg viewBox="0 0 64 64" fill="none" className="orbit-compass-svg">
-                    {/* Outer dial ring */}
-                    <circle cx="32" cy="32" r="28" stroke="rgba(255,255,255,0.18)" strokeWidth="1"/>
-                    {/* 8 tick marks */}
-                    {[0,45,90,135,180,225,270,315].map(a => {
-                      const r1 = a % 90 === 0 ? 23 : 25
-                      const rad = (a - 90) * Math.PI / 180
-                      return (
-                        <line key={a}
-                          x1={32 + Math.cos(rad)*r1} y1={32 + Math.sin(rad)*r1}
-                          x2={32 + Math.cos(rad)*28} y2={32 + Math.sin(rad)*28}
-                          stroke={a % 90 === 0 ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.2)'}
-                          strokeWidth={a % 90 === 0 ? 1.5 : 1}
-                        />
-                      )
-                    })}
-                    {/* N arrow — brand red */}
-                    <path d="M32 32 L29.5 23 L32 7 L34.5 23 Z" fill="#E8323C"/>
-                    {/* S arrow */}
-                    <path d="M32 32 L34.5 41 L32 57 L29.5 41 Z" fill="rgba(255,255,255,0.3)"/>
-                    {/* E arrow */}
-                    <path d="M32 32 L41 29.5 L57 32 L41 34.5 Z" fill="rgba(255,255,255,0.3)"/>
-                    {/* W arrow */}
-                    <path d="M32 32 L23 34.5 L7 32 L23 29.5 Z" fill="rgba(255,255,255,0.3)"/>
-                    {/* Centre jewel */}
-                    <circle cx="32" cy="32" r="3.5" fill="white" opacity="0.9"/>
-                    <circle cx="32" cy="32" r="1.5" fill="#E8323C"/>
-                  </svg>
+        </SectionHead>
+        <div className="grid grid-240">
+          {cards.map(c => {
+            const inner = (
+              <>
+                <div className="img"><img src={c.img} alt={c.alt} loading="lazy" width="700" height="520" /></div>
+                <div className="body">
+                  <div className="top"><span>{c.country}</span><i style={{ background: c.dot }} /></div>
+                  <span className="mono" style={{ color: 'var(--muted)' }}>{c.role}</span>
+                  <span className="facts">{c.facts}</span>
                 </div>
-                <div className="orbit-globe-pulse" />
-              </div>
-
-              {/* Flag nodes */}
-              {flags.map((f, i) => (
-                <Link
-                  key={f.code}
-                  to={`/${f.slug}`}
-                  className="orbit-node"
-                  style={{ animationDelay: `-${(i / flags.length) * 22}s`, textDecoration: 'none' }}
-                >
-                  <div className="orbit-node-glow" />
-                  <img
-                    src={`https://flagcdn.com/w80/${f.code}.png`}
-                    alt={f.name}
-                    className="orbit-flag-img"
-                  />
-                  <span className="orbit-flag-name">{f.name}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-
+              </>
+            )
+            return c.to
+              ? <Link key={c.key} to={c.to} className="dest-card">{inner}</Link>
+              : <a key={c.key} href={c.href} className="dest-card">{inner}</a>
+          })}
         </div>
-
-        {/* Static destination cards — always clickable */}
-        <div className="dest-cards-row">
-          {flags.map(f => (
-            <Link key={f.code} to={`/${f.slug}`} className="dest-card">
-              <img src={`https://flagcdn.com/w80/${f.code}.png`} alt={`${f.name} flag`} width="36" height="26" style={{ borderRadius: 3 }} />
-              <span className="dest-card-name">{f.name}</span>
-              <span className="dest-card-arrow">→</span>
-            </Link>
-          ))}
-        </div>
-
       </div>
     </section>
   )

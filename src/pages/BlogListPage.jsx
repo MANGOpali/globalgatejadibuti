@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
-import { blogPosts } from '../data/blogPosts'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import WhatsApp from '../components/WhatsApp'
-import Cursor from '../components/Cursor'
-import FloatingDot from '../components/FloatingDot'
+import { useEffect, useState } from 'react'
+import Layout from '../components/Layout'
+import PostCard from '../components/PostCard'
+import { ArrowRight, Crumbs, CtaSlim } from '../components/ui'
+import { waLink } from '../data/site'
+import { sortedPosts } from '../data/posts'
+
+// a post can sit under several topics
+const TOPICS = {
+  Visa: /visa|cas\b|ukvi|rejection|gte|graduate route/i,
+  'Test prep': /ielts|pte|test/i,
+  'Costs & scholarships': /cost|scholarship|fund/i,
+  Universities: /universit|comparison| vs /i,
+  Applications: /sop|application/i,
+}
 
 export default function BlogListPage() {
   useEffect(() => {
@@ -37,101 +45,51 @@ export default function BlogListPage() {
     }
   }, [])
 
-  const [featured, ...rest] = blogPosts
+  const [topic, setTopic] = useState('All')
+  const [featured, ...rest] = sortedPosts
+  const shown = topic === 'All' ? rest : sortedPosts.filter(p => TOPICS[topic].test(`${p.category} ${p.title}`))
 
   return (
-    <>
-      <Cursor />
-      <FloatingDot />
-      <Navbar />
-      <main className="blp">
+    <Layout>
+      <section className="wrap" style={{ paddingTop: 56 }}>
+        <Crumbs items={[{ label: 'Home', to: '/' }, { label: 'Blog' }]} />
+        <div className="sec-head" style={{ paddingBottom: 32, borderBottom: '1px solid var(--line-2)', marginBottom: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18, maxWidth: 780 }}>
+            <span className="mono">THE GLOBAL GATE BLOG</span>
+            <h1 className="h1">Guides for studying abroad from Nepal.</h1>
+          </div>
+          <p>Visas, costs, universities and test prep — written by the counsellors who handle these applications every day.</p>
+        </div>
+        <div className="filters" role="group" aria-label="Filter by topic">
+          {['All', ...Object.keys(TOPICS)].map(t => (
+            <button key={t} type="button" aria-pressed={topic === t} onClick={() => setTopic(t)}>{t}</button>
+          ))}
+        </div>
+      </section>
 
-        {/* Hero */}
-        <section className="blp-hero">
-          <div className="wrap">
-            <div className="blp-breadcrumb">
-              <Link to="/">Home</Link>
-              <span>/</span>
-              <span>Blog</span>
+      {topic === 'All' && featured && (
+        <section className="wrap" style={{ paddingTop: 8, paddingBottom: 24 }}>
+          <Link to={`/blog/${featured.slug}`} className="featured-post">
+            <div className="media"><img src={featured.img} alt={featured.title} width="1200" height="600" /></div>
+            <div className="copy">
+              <div className="meta"><span style={{ color: '#FF8A94' }}>LATEST · {featured.category}</span><span>{featured.readTime}</span></div>
+              <h2>{featured.title}</h2>
+              <p>{featured.excerpt}</p>
+              <span className="btn btn-white btn-sm" style={{ alignSelf: 'flex-start' }}>Read the guide →</span>
             </div>
-            <span className="badge badge-light">Insights &amp; Guides</span>
-            <h1 className="blp-title">
-              UK Study Abroad<br />
-              <em>Guides &amp; Tips</em>
-            </h1>
-            <p className="blp-subtitle">
-              Expert advice for Nepali students planning to study in the UK —
-              visa guides, university rankings, cost breakdowns, and IELTS tips
-              from Nepal's exclusive UK education consultancy.
-            </p>
-          </div>
+          </Link>
         </section>
+      )}
 
-        {/* Featured post */}
-        <section className="blp-featured-wrap">
-          <div className="wrap">
-            <Link to={`/blog/${featured.slug}`} className="blp-featured">
-              <div className="blp-featured-img">
-                <img src={featured.img} alt={featured.title} loading="lazy" />
-              </div>
-              <div className="blp-featured-body">
-                <div className="blp-featured-meta">
-                  <span className="blog-cat">{featured.category}</span>
-                  <span className="blp-meta-sep">·</span>
-                  <span className="blp-date">{featured.date}</span>
-                  <span className="blp-meta-sep">·</span>
-                  <span className="blp-date">{featured.readTime}</span>
-                </div>
-                <h2 className="blp-featured-title">{featured.title}</h2>
-                <p className="blp-featured-excerpt">{featured.excerpt}</p>
-                <span className="blp-read-more">
-                  Read Full Guide <span className="blp-arrow">→</span>
-                </span>
-              </div>
-            </Link>
-          </div>
-        </section>
+      <section className="wrap" style={{ paddingTop: 16, paddingBottom: 24 }}>
+        <div className="grid grid-300">{shown.map(p => <PostCard key={p.slug} post={p} />)}</div>
+        {shown.length === 0 && <p className="serif muted" style={{ padding: '32px 0' }}>No guides in this topic yet — ask us on WhatsApp instead.</p>}
+      </section>
 
-        {/* All other posts */}
-        <section className="blp-grid-wrap">
-          <div className="wrap">
-            <div className="blp-grid">
-              {rest.map(post => (
-                <Link to={`/blog/${post.slug}`} key={post.slug} className="blog-card blp-card-link">
-                  <div className="blog-img">
-                    <img src={post.img} alt={post.title} loading="lazy" />
-                    <div className="blog-img-overlay" />
-                  </div>
-                  <div className="blog-body">
-                    <span className="blog-cat">{post.category}</span>
-                    <div className="blog-meta">{post.date} · {post.readTime}</div>
-                    <div className="blog-title">{post.title}</div>
-                    <p className="blog-excerpt">{post.excerpt}</p>
-                    <span className="blog-read">Read Article →</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="blp-cta">
-          <div className="wrap blp-cta-inner">
-            <div>
-              <h2 className="blp-cta-title">Ready to Study in the UK?</h2>
-              <p className="blp-cta-sub">Nepal's exclusive UK university partner — free counseling in Jadibuti.</p>
-            </div>
-            <Link to="/#contact" className="btn-pill btn-white">
-              Book Free Session
-              <span className="arrow-circle">→</span>
-            </Link>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-      <WhatsApp />
-    </>
+      <CtaSlim label="FREE COUNSELING" title="Still have questions? Ask a counsellor — free.">
+        <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn btn-dark">Chat on WhatsApp <ArrowRight /></a>
+        <a href="/#contact" className="btn btn-white">Book a session</a>
+      </CtaSlim>
+    </Layout>
   )
 }

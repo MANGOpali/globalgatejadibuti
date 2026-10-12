@@ -1,116 +1,78 @@
 import { Link } from 'react-router-dom'
-import logoWithBg from '../logo/global_gate.png'
+import logo from '../logo/logo without bg.png'
+import { DESTINATIONS, SOCIALS, PHONE, PHONE_DISPLAY, WHATSAPP_DISPLAY, EMAIL, ADDRESS, HOURS, waLink, aiInterviewUrl } from '../data/site'
 
-const services = [
-  { label: 'Career Counseling',    to: '/#services' },
-  { label: 'University Admission', to: '/#services' },
-  { label: 'Visa Assistance',      to: '/#services' },
-  { label: 'IELTS Preparation',    to: '/ielts-classes-jadibuti' },
-  { label: 'PTE Coaching',         to: '/pte-classes-jadibuti' },
-  { label: 'Scholarship Guidance', to: '/scholarships' },
-]
-const dests = [
-  { label: 'Australia',      slug: 'study-in-australia-from-nepal'   },
-  { label: 'Canada',         slug: 'study-in-canada-from-nepal'      },
-  { label: 'New Zealand',    slug: 'study-in-new-zealand-from-nepal' },
-  { label: 'United Kingdom', slug: 'study-in-uk-from-nepal'          },
-  { label: 'United States',  slug: 'study-in-usa-from-nepal'         },
-]
+const icons = {
+  Facebook: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="currentColor" />,
+  Instagram: <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.5 6.5h.01" /></g>,
+  TikTok: <path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.88-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 1 0 5.54 6.29V8.74a8.18 8.18 0 0 0 4.78 1.52V6.82a4.85 4.85 0 0 1-1.01-.13z" />,
+  YouTube: <path fill="currentColor" d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />,
+}
 
 export default function Footer() {
   return (
-    <>
-      <footer className="footer">
-        <div className="wrap">
-          <div className="footer-grid">
-
-            {/* Brand */}
-            <div>
-              <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-start', gap:10 }}>
-                <img src={logoWithBg} alt="Global Gate" style={{ height:56, width:'auto', objectFit:'contain', borderRadius:8 }} />
-                <div>
-                  <div style={{ color:'#fff', fontFamily:'Barlow Condensed,sans-serif', fontWeight:800, fontSize:'0.95rem', textTransform:'uppercase', letterSpacing:'0.04em', lineHeight:1.3 }}>
-                    Global Gate Educational Consultancy
-                  </div>
-                  <div style={{ fontSize:'0.6rem', color:'var(--red)', fontWeight:600, textTransform:'uppercase', letterSpacing:'0.1em', marginTop:3 }}>
-                    Jadibuti Branch
-                  </div>
-                </div>
-              </div>
-              <p className="footer-brand-desc">
-                Nepal's trusted study-abroad advisor. Helping students from
-                Jadibuti and across eastern Kathmandu achieve their dream of
-                international education with honest guidance and expert
-                visa support.
-              </p>
-              <div className="footer-socials">
-                <a href="https://www.facebook.com/profile.php?id=61589623467706" target="_blank" rel="noreferrer" className="f-soc" title="Facebook">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/globalgateeduconsult.jadibuti" target="_blank" rel="noreferrer" className="f-soc" title="Instagram">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@globalgateedu.jadibuti" target="_blank" rel="noreferrer" className="f-soc" title="TikTok">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.74a8.18 8.18 0 0 0 4.78 1.52V6.82a4.85 4.85 0 0 1-1.01-.13z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/@GlobalGateEduJadibuti" target="_blank" rel="noreferrer" className="f-soc" title="YouTube">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58a2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Services */}
-            <div className="f-col">
-              <div className="f-col-title">Services</div>
-              <ul>{services.map(s => <li key={s.label}><Link to={s.to}>{s.label}</Link></li>)}</ul>
-            </div>
-
-            {/* Destinations */}
-            <div className="f-col">
-              <div className="f-col-title">Destinations</div>
-              <ul>{dests.map(d => <li key={d.slug}><Link to={`/${d.slug}`}>{d.label}</Link></li>)}</ul>
-            </div>
-
-            {/* Resources */}
-            <div className="f-col">
-              <div className="f-col-title">Resources</div>
-              <ul>
-                <li><Link to="/blog">Blog &amp; Guides</Link></li>
-                <li><Link to="/videos">Videos</Link></li>
-              </ul>
-            </div>
-
-            {/* Contact */}
-            <div className="f-col">
-              <div className="f-col-title">Contact</div>
-              <ul>
-                <li style={{ color:'rgba(255,255,255,0.4)', fontSize:13, lineHeight:1.65 }}>
-                  Jadibuti, Kathmandu<br />Near Jadibuti Bus Park, Nepal
-                </li>
-                <li><a href="tel:015253297">📞 015253297</a></li>
-                <li><a href="https://wa.me/9779862349049" target="_blank" rel="noreferrer">💬 +977 986-2349049</a></li>
-                <li><a href="mailto:globalgateedu.jadibuti@gmail.com" style={{ wordBreak:'break-all' }}>
-                  globalgateedu.jadibuti@gmail.com
-                </a></li>
-                <li style={{ color:'rgba(255,255,255,0.4)', fontSize:13, lineHeight:1.65 }}>
-                  Sun–Fri: 8:00 AM – 6:00 PM<br />Saturday: Closed
-                </li>
-              </ul>
-            </div>
-
+    <footer className="site-footer">
+      <div className="foot">
+        <div className="foot-top">
+          <h2>From Jadibuti to <span>the world.</span></h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+            <a href="/#contact" className="btn btn-red">Book free counseling</a>
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">WhatsApp us</a>
           </div>
         </div>
-      </footer>
 
-      <div className="copyright">
-        © {new Date().getFullYear()} Global Gate Educational Consultancy — Jadibuti Branch.
-        &nbsp;Branch of&nbsp;
-        <a href="https://globalgateconsultancy.com" target="_blank" rel="noreferrer">
-          Global Gate Educational Consultancy
-        </a>
-        , Kalanki, Kathmandu.
-        &nbsp;|&nbsp; <a href="mailto:globalgateedu.jadibuti@gmail.com">Contact Us</a>
+        <div className="foot-cols">
+          <div className="foot-brand">
+            <Link to="/" className="foot-logo" aria-label="Global Gate — home"><div><img src={logo} alt="Global Gate Educational Consultancy Pvt. Ltd." width="184" height="184" /></div></Link>
+            <div>{ADDRESS}<br />{HOURS}</div>
+            <div className="foot-contacts">
+              <a href={`tel:${PHONE}`}>{PHONE_DISPLAY}</a>
+              <a href={waLink()} target="_blank" rel="noopener noreferrer">{WHATSAPP_DISPLAY}</a>
+              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            </div>
+            <div className="foot-social">
+              {SOCIALS.map(s => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
+                  <svg aria-hidden="true" viewBox="0 0 24 24">{icons[s.label]}</svg>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="foot-col">
+            <span className="mono">DESTINATIONS</span>
+            {DESTINATIONS.map(d => d.to.startsWith('/#')
+              ? <a key={d.code} href={d.to}>{d.name}</a>
+              : <Link key={d.code} to={d.to}>{d.name}</Link>)}
+          </div>
+
+          <div className="foot-col">
+            <span className="mono">SERVICES</span>
+            <Link to="/ielts-classes-jadibuti">IELTS preparation</Link>
+            <Link to="/pte-classes-jadibuti">PTE preparation</Link>
+            <a href={aiInterviewUrl('footer')} target="_blank" rel="noopener noreferrer">AI Pre-CAS interview ↗</a>
+            <Link to="/uk-student-visa-process">UK student visa</Link>
+            <Link to="/australia-student-visa-process">Australia student visa</Link>
+            <Link to="/scholarships">Scholarships</Link>
+          </div>
+
+          <div className="foot-col">
+            <span className="mono">EXPLORE</span>
+            <Link to="/blog">Blog</Link>
+            <Link to="/videos">Videos</Link>
+            <a href="/#faq">FAQ</a>
+            <Link to="/study-abroad-consultancy-jadibuti">Consultancy in Jadibuti</Link>
+            <Link to="/study-abroad-consultancy-koteshwor">Koteshwor students</Link>
+            <Link to="/study-abroad-consultancy-baneshwor">Baneshwor students</Link>
+            <Link to="/study-abroad-consultancy-pepsicola">Pepsicola students</Link>
+          </div>
+        </div>
+
+        <div className="foot-bottom">
+          <span>© {new Date().getFullYear()} GLOBAL GATE EDUCATIONAL CONSULTANCY PVT. LTD. — JADIBUTI BRANCH</span>
+          <a href="#top">BACK TO TOP ↑</a>
+        </div>
       </div>
-    </>
+    </footer>
   )
 }
