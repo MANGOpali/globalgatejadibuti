@@ -9,22 +9,17 @@ function sitemapPlugin() {
   return {
     name: 'generate-sitemap',
     closeBundle() {
-      // Dynamically import blogPosts at build time via file read + eval-free parse
-      const postsFile = path.resolve('src/data/blogPosts.js')
-      const raw = fs.readFileSync(postsFile, 'utf-8')
-
-      // Extract slugs and dates using regex — no eval needed
-      const slugs = [...raw.matchAll(/slug:\s*'([^']+)'/g)].map(m => m[1])
-      const dates = [...raw.matchAll(/date:\s*'([^']+)'/g)].map(m => {
-        const d = new Date(m[1])
-        return isNaN(d) ? new Date().toISOString().split('T')[0] : d.toISOString().split('T')[0]
-      })
+      // posts come from Sanity via scripts/fetch-content.mjs (src/data/posts.generated.json)
+      const posts = JSON.parse(fs.readFileSync(path.resolve('src/data/posts.generated.json'), 'utf-8'))
+      const slugs = posts.map(p => p.slug)
+      const dates = posts.map(p => p.isoDate)
 
       const today = new Date().toISOString().split('T')[0]
 
       const staticUrls = [
         { loc: `${BASE_URL}/`,                        lastmod: today, changefreq: 'monthly', priority: '1.0' },
         { loc: `${BASE_URL}/blog`,                    lastmod: today, changefreq: 'weekly',  priority: '0.9' },
+        { loc: `${BASE_URL}/videos`,                  lastmod: today, changefreq: 'weekly',  priority: '0.8' },
         { loc: `${BASE_URL}/study-in-uk-from-nepal`,             lastmod: today, changefreq: 'monthly', priority: '0.9' },
         { loc: `${BASE_URL}/study-in-australia-from-nepal`,      lastmod: today, changefreq: 'monthly', priority: '0.9' },
         { loc: `${BASE_URL}/study-in-canada-from-nepal`,         lastmod: today, changefreq: 'monthly', priority: '0.9' },
@@ -58,8 +53,10 @@ function sitemapPlugin() {
         '</urlset>',
       ].join('\n')
 
+      // write into the build output (what gets deployed) and public/ (for local dev)
       fs.writeFileSync(path.resolve('public/sitemap.xml'), xml)
-      console.log(`[sitemap] Generated ${slugs.length + 2} URLs → public/sitemap.xml`)
+      if (fs.existsSync(path.resolve('dist'))) fs.writeFileSync(path.resolve('dist/sitemap.xml'), xml)
+      console.log(`[sitemap] Generated ${staticUrls.length + postUrls.length} URLs → dist/sitemap.xml`)
     },
   }
 }
