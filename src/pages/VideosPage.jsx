@@ -4,6 +4,13 @@ import ShortsRow from '../components/ShortsRow'
 import Layout from '../components/Layout'
 import { ArrowRight, Crumbs, CtaSlim } from '../components/ui'
 
+// group video categories into a few filter buttons
+const VIDEO_TOPICS = {
+  'UK Visa': 'UK', 'UK Study': 'UK', 'Australia': 'Australia', 'New Zealand': 'New Zealand', 'USA': 'USA',
+  'Canada': 'Canada', 'Japan': 'Japan', 'South Korea': 'South Korea', 'IELTS & PTE': 'IELTS & PTE',
+  'Study Abroad Tips': 'Tips', 'Student Stories': 'Tips',
+}
+
 function VideoFrame({ video, activeId, setActiveId }) {
   const playing = activeId === video.id
   return (
@@ -95,7 +102,11 @@ export default function VideosPage() {
     }
   }, [])
 
+  const [topic, setTopic] = useState('All')
   const [first, ...more] = longVideos
+  const topicOf = (v) => VIDEO_TOPICS[v.category] || 'Tips'
+  const topics = ['All', ...[...new Set(more.map(topicOf))].sort((a, b) => more.filter(v => topicOf(v) === b).length - more.filter(v => topicOf(v) === a).length)]
+  const shownLong = topic === 'All' ? more : more.filter(v => topicOf(v) === topic)
 
   return (
     <Layout>
@@ -128,9 +139,21 @@ export default function VideosPage() {
       )}
 
       <section className="wrap" style={{ paddingTop: 24, paddingBottom: 24 }}>
-        {shorts.length > 0 && more.length > 0 && <span className="mono" style={{ display: 'block', margin: '24px 0 16px' }}>FULL VIDEOS</span>}
+        {more.length > 0 && (
+          <div className="sec-head" style={{ marginTop: 32, marginBottom: 0 }}>
+            <div>
+              <span className="mono">FULL VIDEOS · {more.length + 1}</span>
+              <h2 className="h3">Guides, interview series and visa updates.</h2>
+            </div>
+          </div>
+        )}
+        {topics.length > 2 && (
+          <div className="filters" role="group" aria-label="Filter videos by topic">
+            {topics.map(t => <button key={t} type="button" aria-pressed={topic === t} onClick={() => setTopic(t)}>{t}</button>)}
+          </div>
+        )}
         <div className="grid grid-300">
-          {more.map(v => (
+          {shownLong.map(v => (
             <div className="vid-card" key={v.id}>
               <VideoFrame video={v} activeId={activeId} setActiveId={setActiveId} />
               <div className="copy">
