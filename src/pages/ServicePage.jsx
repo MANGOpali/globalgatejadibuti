@@ -7,6 +7,8 @@ import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
 import { ArrowRight, Crumbs, SectionHead, NumCards, Steps, CtaSlim, AICallout, FaqList } from '../components/ui'
 import { waLink } from '../data/site'
+import ShortsRow from '../components/ShortsRow'
+import { shortsForPage } from '../data/videos'
 
 export default function ServicePage() {
   const { pathname } = useLocation()
@@ -83,6 +85,7 @@ export default function ServicePage() {
 
   const relatedPosts = (page.relatedBlogSlugs || []).map(s => getPostBySlug(s)).filter(Boolean)
   const relatedDests = (page.relatedSlugs || []).map(s => getDestinationBySlug(s)).filter(Boolean)
+  const pageShorts = shortsForPage(page.slug)
   const showAI = ['ielts-classes-jadibuti', 'pte-classes-jadibuti', 'uk-student-visa-process'].includes(page.slug)
 
   return (
@@ -149,6 +152,14 @@ export default function ServicePage() {
               title="Heading to the UK? Rehearse your Pre-CAS interview with AI."
               text="19 real questions on camera, scored out of 100, with speaking-pace and filler-word feedback."
             />
+          </div>
+        </section>
+      )}
+
+      {pageShorts.length > 0 && (
+        <section className="section">
+          <div className="wrap section-rule">
+            <ShortsRow items={pageShorts} label="SHORTS" title="Quick tips from our counsellors." />
           </div>
         </section>
       )}

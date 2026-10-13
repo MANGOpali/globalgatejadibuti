@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { videos } from '../data/videos'
+import { videos, longVideos, shorts } from '../data/videos'
+import ShortsRow from '../components/ShortsRow'
 import Layout from '../components/Layout'
 import { ArrowRight, Crumbs, CtaSlim } from '../components/ui'
 
@@ -94,7 +95,7 @@ export default function VideosPage() {
     }
   }, [])
 
-  const [first, ...more] = videos
+  const [first, ...more] = longVideos
 
   return (
     <Layout>
@@ -120,7 +121,14 @@ export default function VideosPage() {
         )}
       </section>
 
+      {shorts.length > 0 && (
+        <section className="wrap" style={{ paddingTop: 48 }}>
+          <ShortsRow items={shorts} />
+        </section>
+      )}
+
       <section className="wrap" style={{ paddingTop: 24, paddingBottom: 24 }}>
+        {shorts.length > 0 && more.length > 0 && <span className="mono" style={{ display: 'block', margin: '24px 0 16px' }}>FULL VIDEOS</span>}
         <div className="grid grid-300">
           {more.map(v => (
             <div className="vid-card" key={v.id}>

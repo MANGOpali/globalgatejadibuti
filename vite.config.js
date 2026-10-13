@@ -25,6 +25,8 @@ function sitemapPlugin() {
         { loc: `${BASE_URL}/study-in-canada-from-nepal`,         lastmod: today, changefreq: 'monthly', priority: '0.9' },
         { loc: `${BASE_URL}/study-in-new-zealand-from-nepal`,    lastmod: today, changefreq: 'monthly', priority: '0.9' },
         { loc: `${BASE_URL}/study-in-usa-from-nepal`,            lastmod: today, changefreq: 'monthly', priority: '0.9' },
+        { loc: `${BASE_URL}/study-in-japan-from-nepal`,          lastmod: today, changefreq: 'monthly', priority: '0.9' },
+        { loc: `${BASE_URL}/study-in-south-korea-from-nepal`,    lastmod: today, changefreq: 'monthly', priority: '0.9' },
         { loc: `${BASE_URL}/ielts-classes-jadibuti`,             lastmod: today, changefreq: 'monthly', priority: '0.9' },
         { loc: `${BASE_URL}/pte-classes-jadibuti`,               lastmod: today, changefreq: 'monthly', priority: '0.9' },
         { loc: `${BASE_URL}/uk-student-visa-process`,            lastmod: today, changefreq: 'monthly', priority: '0.9' },

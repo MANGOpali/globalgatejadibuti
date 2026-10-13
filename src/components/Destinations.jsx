@@ -15,8 +15,6 @@ const cards = [
     alt: `Study in ${d.country}`,
     dot: i === 0 ? '#C8202F' : '#1B3A6B',
   })),
-  { key: 'japan', href: '/#contact', country: 'Japan', role: 'Language school + university', facts: 'JAPANESE LANGUAGE PATHWAY\nPART-TIME WORK ALLOWED', img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=700&h=520&fit=crop&auto=format', alt: 'Tokyo street at night', dot: '#1B3A6B' },
-  { key: 'korea', href: '/#contact', country: 'South Korea', role: 'Language + degree programs', facts: 'KOREAN LANGUAGE PATHWAY\nD-2 / D-4 STUDENT VISA', img: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=700&h=520&fit=crop&auto=format', alt: 'Seoul street with neon signs', dot: '#1B3A6B' },
 ]
 
 export default function Destinations() {
