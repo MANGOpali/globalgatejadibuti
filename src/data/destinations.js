@@ -275,7 +275,7 @@ export const destinations = [
       'Student visa at the Japanese Embassy, Kathmandu',
       'Pre-departure briefing and flight to Japan',
     ],
-    relatedSlugs: [],
+    relatedSlugs: ['japan-student-visa-from-nepal'],
   },
   {
     slug: 'study-in-south-korea-from-nepal',
@@ -320,7 +320,7 @@ export const destinations = [
       'Visa application at the Korean Embassy, Kathmandu',
       'Pre-departure briefing and flight to Korea',
     ],
-    relatedSlugs: [],
+    relatedSlugs: ['south-korea-d4-d2-visa-nepal'],
   },
 ]
 
