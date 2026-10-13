@@ -1,7 +1,7 @@
 // Runs after `vite build`. Writes one HTML file per route (dist/blog/<slug>.html, dist/study-in-uk-from-nepal.html, …)
 // with that page's own <title>, description, canonical URL, Open Graph / Twitter preview tags and structured data,
 // so Google and link previews (WhatsApp, Facebook, LinkedIn) see the right details without running JavaScript.
-// The React app still boots normally on top. Vercel serves these files first (cleanUrls), then falls back to index.html.
+// The React app still boots normally on top. Vercel serves these files (cleanUrls); anything else gets 404.html.
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
@@ -187,4 +187,10 @@ for (const l of localPages) {
 }
 
 pages.forEach(render)
+
+// Unknown addresses: Vercel serves 404.html with a real 404 status; the app then shows its "wrong turn" page.
+const notFound = template
+  .replace(/<title>[\s\S]*?<\/title>/, '<title>Page Not Found | Global Gate Jadibuti</title>')
+  .replace('</head>', '    <meta name="robots" content="noindex" />\n  </head>')
+fs.writeFileSync(path.join(DIST, '404.html'), notFound)
 console.log(`[prerender] Wrote ${pages.length} page files with their own title, description and preview tags`)
