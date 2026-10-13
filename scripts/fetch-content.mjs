@@ -6,7 +6,8 @@ import path from 'node:path'
 
 const PROJECT = 'ma4cwx8o'
 const DATASET = 'production'
-const API = `https://${PROJECT}.apicdn.sanity.io/v2025-01-01/data/query/${DATASET}`
+// live API, not the CDN: a build starts seconds after a publish/delete, and the CDN can still serve the old copy
+const API = `https://${PROJECT}.api.sanity.io/v2025-01-01/data/query/${DATASET}`
 const OUT = path.resolve('src/data')
 
 const POSTS_QUERY = `*[_type == "post" && defined(slug.current) && !(_id in path("drafts.**"))] | order(publishedAt desc) {
