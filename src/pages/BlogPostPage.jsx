@@ -7,11 +7,27 @@ import { ArrowRight, Crumbs, SectionHead, CtaSlim } from '../components/ui'
 import { waLink, aiInterviewUrl } from '../data/site'
 import { sortedPosts } from '../data/posts'
 
+// content is either plain text or rich segments [{ t, b, i, href }] from Sanity
+function rich(content) {
+  if (!Array.isArray(content)) return content
+  return content.map((s, i) => {
+    let node = s.t
+    if (s.b) node = <strong>{node}</strong>
+    if (s.i) node = <em>{node}</em>
+    if (s.href) {
+      const external = /^https?:/.test(s.href)
+      node = <a href={s.href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{node}</a>
+    }
+    return <span key={i}>{node}</span>
+  })
+}
+
 function renderBody(item, i) {
-  if (item.type === 'p') return <p key={i}>{item.content}</p>
+  if (item.type === 'p') return <p key={i}>{rich(item.content)}</p>
+  if (item.type === 'h3') return <h3 key={i}>{item.content}</h3>
   if (item.type === 'callout') return <div key={i} className="callout">{item.content}</div>
-  if (item.type === 'ul') return <ul key={i}>{item.content.map((li, j) => <li key={j}>{li}</li>)}</ul>
-  if (item.type === 'ol') return <ol key={i}>{item.content.map((li, j) => <li key={j}>{li}</li>)}</ol>
+  if (item.type === 'ul') return <ul key={i}>{item.content.map((li, j) => <li key={j}>{rich(li)}</li>)}</ul>
+  if (item.type === 'ol') return <ol key={i}>{item.content.map((li, j) => <li key={j}><span>{rich(li)}</span></li>)}</ol>
   return null
 }
 
@@ -120,7 +136,7 @@ export default function BlogPostPage() {
           <h1 className="h1" style={{ fontSize: 'clamp(38px, 5.4vw, 76px)' }}>{post.title}</h1>
           <p className="lead" style={{ fontSize: 20, maxWidth: 760 }}>{post.excerpt}</p>
         </div>
-        <div className="article-cover"><img src={post.img} alt={post.title} width="1200" height="600" /></div>
+        <div className="article-cover"><img src={post.img} alt={post.imgAlt || post.title} width="1200" height="600" /></div>
       </section>
 
       <div className="wrap article-layout">
@@ -128,7 +144,7 @@ export default function BlogPostPage() {
           <div className="side-card">
             <span className="mono">IN THIS GUIDE</span>
             <ol className="toc">
-              {post.sections.map((s, i) => <li key={s.heading}><a href={`#${anchor(i)}`}><span>{String(i + 1).padStart(2, '0')}</span>{s.heading}</a></li>)}
+              {post.sections.map((s, i) => s.heading && <li key={s.heading}><a href={`#${anchor(i)}`}><span>{String(i + 1).padStart(2, '0')}</span>{s.heading}</a></li>)}
             </ol>
           </div>
           {isUK && (
@@ -152,8 +168,8 @@ export default function BlogPostPage() {
         <article className="prose">
           <p className="intro">{post.intro}</p>
           {post.sections.map((section, i) => (
-            <section key={section.heading}>
-              <h2 id={anchor(i)}>{section.heading}</h2>
+            <section key={section.heading || i}>
+              {section.heading && <h2 id={anchor(i)}>{section.heading}</h2>}
               {section.body.map((item, j) => renderBody(item, j))}
             </section>
           ))}
