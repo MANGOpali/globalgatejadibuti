@@ -103,7 +103,8 @@ async function main() {
       cta: p.cta || '',
     }
   })
-  const videos = rawVideos.map(v => ({ id: ytId(v.youtubeUrl), title: v.title, category: v.category, date: shortDate(v.publishedAt), uploadDate: v.publishedAt })).filter(v => v.id)
+  // a youtube.com/shorts/… link means a vertical Short; it goes in the Shorts row instead of the main grid
+  const videos = rawVideos.map(v => ({ id: ytId(v.youtubeUrl), title: v.title, category: v.category, date: shortDate(v.publishedAt), uploadDate: v.publishedAt, short: /\/shorts\//.test(v.youtubeUrl) })).filter(v => v.id)
 
   if (!posts.length) throw new Error('No posts returned — keeping the existing files')
   fs.writeFileSync(path.join(OUT, 'posts.generated.json'), JSON.stringify(posts, null, 1))

@@ -23,13 +23,12 @@ export const SOCIALS = [
 ]
 
 // Destinations shown on the globe, the home grid and the footer.
-// Japan and South Korea have no dedicated page yet, so they lead to the contact form.
 export const DESTINATIONS = [
   { code: 'UK', name: 'United Kingdom', to: '/study-in-uk-from-nepal', color: '#38BDF8' },
   { code: 'US', name: 'United States', to: '/study-in-usa-from-nepal', color: '#A78BFA' },
   { code: 'CA', name: 'Canada', to: '/study-in-canada-from-nepal', color: '#FB923C' },
   { code: 'AU', name: 'Australia', to: '/study-in-australia-from-nepal', color: '#FACC15' },
   { code: 'NZ', name: 'New Zealand', to: '/study-in-new-zealand-from-nepal', color: '#4ADE80' },
-  { code: 'JP', name: 'Japan', to: '/#contact', color: '#F472B6' },
-  { code: 'KR', name: 'South Korea', to: '/#contact', color: '#F8FAFC' },
+  { code: 'JP', name: 'Japan', to: '/study-in-japan-from-nepal', color: '#F472B6' },
+  { code: 'KR', name: 'South Korea', to: '/study-in-south-korea-from-nepal', color: '#F8FAFC' },
 ]

@@ -6,6 +6,8 @@ import Layout from '../components/Layout'
 import PostCard from '../components/PostCard'
 import { ArrowRight, Crumbs, SectionHead, NumCards, Steps, CtaSlim, AICallout } from '../components/ui'
 import { waLink } from '../data/site'
+import ShortsRow from '../components/ShortsRow'
+import { shortsForPage } from '../data/videos'
 
 export default function DestinationPage() {
   const { pathname } = useLocation()
@@ -85,6 +87,7 @@ export default function DestinationPage() {
   const relatedPosts = dest.relatedSlugs.map(s => getPostBySlug(s)).filter(Boolean)
   const otherDests = destinations.filter(d => d.slug !== slug)
   const isUK = dest.slug === 'study-in-uk-from-nepal'
+  const pageShorts = shortsForPage(dest.slug)
 
   return (
     <Layout>
@@ -130,8 +133,8 @@ export default function DestinationPage() {
             <a href="/#contact" className="btn btn-navy" style={{ marginTop: 24 }}>Check my eligibility</a>
           </div>
           <div>
-            <span className="mono" style={{ display: 'block', marginBottom: 10 }}>UNIVERSITIES</span>
-            <h2 className="h3" style={{ marginBottom: 28 }}>Where our students go.</h2>
+            <span className="mono" style={{ display: 'block', marginBottom: 10 }}>{dest.universitiesTitle ? 'STUDY OPTIONS' : 'UNIVERSITIES'}</span>
+            <h2 className="h3" style={{ marginBottom: 28 }}>{dest.universitiesTitle ? 'Ways to study.' : 'Where our students go.'}</h2>
             <ul className="chip-list">{dest.universities.map(u => <li key={u}>{u}</li>)}</ul>
             <p className="serif muted" style={{ marginTop: 18 }}>We match your profile to the right university — not just the most popular one.</p>
           </div>
@@ -155,6 +158,14 @@ export default function DestinationPage() {
               title="Most UK universities interview you before issuing your CAS. Practise it with AI first."
               text="A full 19-question mock on camera, with a score out of 100 and notes on every answer."
             />
+          </div>
+        </section>
+      )}
+
+      {pageShorts.length > 0 && (
+        <section className="section">
+          <div className="wrap section-rule">
+            <ShortsRow items={pageShorts} label="SHORTS" title="Quick tips from our counsellors." />
           </div>
         </section>
       )}

@@ -23,6 +23,8 @@ export default function App() {
         <Route path="/study-in-canada-from-nepal" element={<DestinationPage />} />
         <Route path="/study-in-new-zealand-from-nepal" element={<DestinationPage />} />
         <Route path="/study-in-usa-from-nepal" element={<DestinationPage />} />
+        <Route path="/study-in-japan-from-nepal" element={<DestinationPage />} />
+        <Route path="/study-in-south-korea-from-nepal" element={<DestinationPage />} />
         <Route path="/ielts-classes-jadibuti" element={<ServicePage />} />
         <Route path="/pte-classes-jadibuti" element={<ServicePage />} />
         <Route path="/uk-student-visa-process" element={<ServicePage />} />
