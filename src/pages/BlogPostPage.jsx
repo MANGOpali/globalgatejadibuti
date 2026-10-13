@@ -64,7 +64,7 @@ export default function BlogPostPage() {
       headline: post.title,
       description: post.metaDescription,
       image: post.img,
-      datePublished: post.date,
+      datePublished: post.isoDate || post.date,
       author: {
         '@type': 'Organization',
         name: 'Global Gate Educational Consultancy — Jadibuti Branch',
