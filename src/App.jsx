@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import HomePage from './pages/HomePage'
+import PageErrorBoundary from './components/PageErrorBoundary'
 
 // inner pages load on demand so the home page ships less JavaScript
 const BlogListPage = lazy(() => import('./pages/BlogListPage'))
@@ -12,7 +13,10 @@ const VideosPage = lazy(() => import('./pages/VideosPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 export default function App() {
+  const { pathname } = useLocation()
   return (
+    // keyed by path so a failed page doesn't stay broken after navigating elsewhere
+    <PageErrorBoundary key={pathname}>
     <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -39,5 +43,6 @@ export default function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
+    </PageErrorBoundary>
   )
 }
