@@ -1,7 +1,7 @@
 // Runs after `vite build`. Writes one HTML file per route (dist/blog/<slug>.html, dist/study-in-uk-from-nepal.html, …)
 // with that page's own <title>, description, canonical URL, Open Graph / Twitter preview tags and structured data,
 // so Google and link previews (WhatsApp, Facebook, LinkedIn) see the right details without running JavaScript.
-// The React app still boots normally on top. Vercel serves these files (cleanUrls); anything else gets 404.html.
+// The React app still boots normally on top. vercel.json rewrites /path to /path.html; anything else gets 404.html.
 import fs from 'node:fs'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
